@@ -4,23 +4,23 @@ self.__precacheManifest = [
     "url": "/rmaslite/static/js/runtime~main.56446b6f.js"
   },
   {
-    "revision": "e70ab67a808f130fa037",
-    "url": "/rmaslite/static/js/main.e70ab67a.chunk.js"
+    "revision": "2f5c569a0dc711bcaecd",
+    "url": "/rmaslite/static/js/main.2f5c569a.chunk.js"
   },
   {
     "revision": "3d7998ebd63884c06edf",
     "url": "/rmaslite/static/js/2.3d7998eb.chunk.js"
   },
   {
-    "revision": "e70ab67a808f130fa037",
-    "url": "/rmaslite/static/css/main.9b572eab.chunk.css"
+    "revision": "2f5c569a0dc711bcaecd",
+    "url": "/rmaslite/static/css/main.124e0c23.chunk.css"
   },
   {
     "revision": "3d7998ebd63884c06edf",
     "url": "/rmaslite/static/css/2.bac4f0fa.chunk.css"
   },
   {
-    "revision": "da26691326e95aba5b9f7b07fed1df6d",
+    "revision": "20f2f33ea6d14ee2ae34794daed63710",
     "url": "/rmaslite/index.html"
   }
 ];
