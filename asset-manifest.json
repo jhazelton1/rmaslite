@@ -1,15 +1,15 @@
 {
-  "main.css": "/rmaslite/static/css/main.c33b9334.chunk.css",
-  "main.js": "/rmaslite/static/js/main.4d015452.chunk.js",
-  "main.js.map": "/rmaslite/static/js/main.4d015452.chunk.js.map",
+  "main.css": "/rmaslite/static/css/main.cbd7b7f0.chunk.css",
+  "main.js": "/rmaslite/static/js/main.adb2f715.chunk.js",
+  "main.js.map": "/rmaslite/static/js/main.adb2f715.chunk.js.map",
   "runtime~main.js": "/rmaslite/static/js/runtime~main.56446b6f.js",
   "runtime~main.js.map": "/rmaslite/static/js/runtime~main.56446b6f.js.map",
-  "static/css/2.2386eea5.chunk.css": "/rmaslite/static/css/2.2386eea5.chunk.css",
-  "static/js/2.6b76bd8d.chunk.js": "/rmaslite/static/js/2.6b76bd8d.chunk.js",
-  "static/js/2.6b76bd8d.chunk.js.map": "/rmaslite/static/js/2.6b76bd8d.chunk.js.map",
+  "static/css/2.abb7c2d3.chunk.css": "/rmaslite/static/css/2.abb7c2d3.chunk.css",
+  "static/js/2.a2c0c31f.chunk.js": "/rmaslite/static/js/2.a2c0c31f.chunk.js",
+  "static/js/2.a2c0c31f.chunk.js.map": "/rmaslite/static/js/2.a2c0c31f.chunk.js.map",
   "index.html": "/rmaslite/index.html",
-  "precache-manifest.cd9d39da8570f6b8148ab0032da55678.js": "/rmaslite/precache-manifest.cd9d39da8570f6b8148ab0032da55678.js",
+  "precache-manifest.21c3231504f241e2d10d489b1759f515.js": "/rmaslite/precache-manifest.21c3231504f241e2d10d489b1759f515.js",
   "service-worker.js": "/rmaslite/service-worker.js",
-  "static/css/2.2386eea5.chunk.css.map": "/rmaslite/static/css/2.2386eea5.chunk.css.map",
-  "static/css/main.c33b9334.chunk.css.map": "/rmaslite/static/css/main.c33b9334.chunk.css.map"
+  "static/css/2.abb7c2d3.chunk.css.map": "/rmaslite/static/css/2.abb7c2d3.chunk.css.map",
+  "static/css/main.cbd7b7f0.chunk.css.map": "/rmaslite/static/css/main.cbd7b7f0.chunk.css.map"
 }
