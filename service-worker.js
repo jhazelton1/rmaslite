@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rmaslite/precache-manifest.7856c41b43dbe9d8e1b318de51c8dc47.js"
+  "/rmaslite/precache-manifest.734fc75058c4f5f2bf8b16892cb95a29.js"
 );
 
 workbox.clientsClaim();
