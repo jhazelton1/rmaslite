@@ -136,18 +136,10 @@ class FlightTableB extends Component {
                                   : ""
                               : ""
                         }}
-                        // title={
-                        //   i[j] ?
-                        //   i[j].split(";").length > 2 &&
-                        //   i[j].split(";")[i[j].split(";").length - 1].length !==
-                        //     3
-                        //     ? i[j]
-                        //         .split(";")
-                        //         [i[j].split(";").length - 1].split(" ")
-                        //         .reduce((acc, c) => (acc += c + '\n'), '')
-                        //     : ""
-                        //     : ""
-                        // }
+
+                        title={
+                          i[j] ? i[j].split(";")[1] : ""
+                        }
                         onContextMenu={e => this.onContextMenuHandler(e, i)}
                         onMouseDown={e => this.onMouseDownHandler(e, i)}
                         key={jj}

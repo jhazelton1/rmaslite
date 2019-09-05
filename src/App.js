@@ -205,6 +205,10 @@ class App extends Component {
               obj["row"] = k;
               return obj;
             }),
+          columnDirections: data.filter((item, i) => i === 4)[0].split(",").reduce((obj, c) => {
+            obj[c] = false;
+            return obj;
+          }, {}),
           currentDate: data[0].split(",")[4],
           currentTime: data[0].split(",")[6],
           direction: true
@@ -346,7 +350,7 @@ class App extends Component {
       )
       .catch(e => {
         this.setState({ noFile: true, exception: e });
-        alert(e)
+        // alert(e)
         console.log(e);
       });
   }
@@ -641,7 +645,10 @@ class App extends Component {
   }
 
   handleColumnExceptionSort(column, content, clicked) {
-    let direction = this.state.direction;
+    // let direction = this.state.direction;
+
+    let direction = this.state.columnDirections[column]
+
     let sortedData = content.sort((a, b) => {
       if (a[column]) {
         let nameA = a[column]
@@ -691,7 +698,7 @@ class App extends Component {
       }
       this.setState({
         currentContent: sortedData,
-        direction: !this.state.direction
+        columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
       });
     } else {
       this.setState({
@@ -701,7 +708,10 @@ class App extends Component {
   }
 
   handleFlightSort(column, content, clicked) {
-    let direction = this.state.direction;
+    // let direction = this.state.direction;
+
+    let direction = this.state.columnDirections[column]
+
     let sortedData = content.sort((a, b) => {
       let nameA = a["FLIGHT;BBW"]
         .split(";")[0]
@@ -750,7 +760,7 @@ class App extends Component {
       }
       this.setState({
         currentContent: sortedData,
-        direction: !this.state.direction
+        columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
       });
     } else {
       this.setState({
@@ -767,7 +777,9 @@ class App extends Component {
         this.selectColumn(column);
       }
     } else {
+
       this.setState({ isSorted: column });
+
       if (column === "FLIGHT;BBW") {
         this.setState({ isSecondarySorted: "GATE;BBW" });
         this.handleFlightSort(column, content, clicked);
@@ -775,7 +787,22 @@ class App extends Component {
         column === "AC;BBW" ||
         column === "GATE;BBW" ||
         column === "STA;BBW" ||
-        column === "STD;BBW"
+        column === "STD;BBW" ||
+        column === "BCON;BBW" ||
+        column === "PUSH;BBW" ||
+        column === "TAXI;BBW" ||
+        column === "OUT;BBW" ||
+        column === "OFF;BBW" ||
+        column === "I/R;BBW" ||
+        column === "IN;BBW" ||
+        column === "ON;BBW" ||
+        column === "IREQ;BBW" ||
+        column === "ISTR;BBW" ||
+        column === "ICMP;BBW" ||
+        column === "DREQ;BBW" ||
+        column === "ONPD;BBW" ||
+        column === "OFPD;BBW" ||
+        column === "OUT;BBW"
       ) {
         this.setState({ isSecondarySorted: "FLIGHT;BBW" });
         this.handleColumnExceptionSort(column, content, clicked);
@@ -785,7 +812,8 @@ class App extends Component {
           ? this.setState({ isSecondarySorted: "STA;BBW" })
           : this.setState({ isSecondarySorted: "STD;BBW" });
 
-        let direction = this.state.direction;
+        // let direction = this.state.direction;
+        let direction = this.state.columnDirections[column]
 
         let sortedData = content.sort((a, b) => {
           if (a[column]) {
@@ -927,7 +955,7 @@ class App extends Component {
           }
           this.setState({
             currentContent: sortedData,
-            direction: !this.state.direction
+            columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}
           });
         } else {
           this.setState({
