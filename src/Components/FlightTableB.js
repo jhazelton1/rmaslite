@@ -6,13 +6,11 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const Th = styled.th`
   border: ${props => (props.isSelected ? "2px solid blue" : "")} !important;
-  background-color: ${props => (props.isSorted ? "lightblue" : "")} !important;
+
   color: ${props => (props.isSecondarySorted ? "blue" : "")} !important;
 `
 
-// border-bottom: ${props => props.isSelectedRow ? "1px solid black" : "none"} !important;
-const Td = styled.td`
-  
+const Td = styled.td`  
 `
 
 const Tr = styled.tr`
@@ -80,7 +78,14 @@ class FlightTableB extends Component {
               .filter(i => i !== "undefined" && i !== "row")
               .map((item, i) => (
                 <Th
+                  style={{backgroundColor: item === this.props.sorted && this.props.columnDirections[this.props.sorted] 
+                    ? "lightblue" 
+                    : item === this.props.sorted 
+                    ? "cornflowerblue" 
+                    : ""}}
+                  columnDirections={this.props.columnDirections}
                   isSelected={this.props.selected === item}
+                  sortedColumn={this.props.sorted}
                   isSorted={this.props.sorted === item}
                   isSecondarySorted={this.props.secondarySorted === item}
                   key={i}
@@ -99,6 +104,11 @@ class FlightTableB extends Component {
                   }
                 >
                   {item.includes(";") ? item.split(";")[0].trim() : ""}
+                  {/* {item === this.props.sorted && this.props.columnDirections[item]
+                    ? ""
+                    : this.props.sorted === item
+                      ? <span>&#x25BC;</span>
+                      : "" */}
                 </Th>
               ))}
           </tr>
@@ -120,6 +130,7 @@ class FlightTableB extends Component {
 
                     return (
                       <Td
+                        title={i[j] ? i[j].split(";")[1] : ""}
                         isSelectedTd={selectedTd}
                         style={{
                           position: 'relative',
@@ -136,10 +147,6 @@ class FlightTableB extends Component {
                                   : ""
                               : ""
                         }}
-
-                        title={
-                          i[j] ? i[j].split(";")[1] : ""
-                        }
                         onContextMenu={e => this.onContextMenuHandler(e, i)}
                         onMouseDown={e => this.onMouseDownHandler(e, i)}
                         key={jj}

@@ -206,7 +206,17 @@ class App extends Component {
               return obj;
             }),
           columnDirections: data.filter((item, i) => i === 4)[0].split(",").reduce((obj, c) => {
-            obj[c] = false;
+            if (location.slice(-6) === 'IBLIST' && c === 'STA;BBW') {
+              obj[c] = true;
+            } else if (location.slice(-6) === 'OBLIST' && c === 'STD;BBW') {
+              obj[c] = true;
+            } else if (location.slice(-5) === 'INLET' && c === 'IREQ;BBW') {
+              obj[c] = true;
+            } else if (location.slice(-5) === 'DEICE' && c === 'DILOC;BBW') {
+              obj[c] = true;
+            } else {
+              obj[c] = false;
+            }
             return obj;
           }, {}),
           currentDate: data[0].split(",")[4],
@@ -235,8 +245,8 @@ class App extends Component {
             : "";
 
           if (columns) {
-            if (location.length === 4) {
-              if (location[3] === "DEICE") {
+            if (location.length === 3) {
+              if (location[2] === "DEICE") {
                 let index = columns.indexOf("DILOC;BBW");
                 this.onSort(columns[index], content, null);
               } else {
@@ -698,11 +708,12 @@ class App extends Component {
       }
       this.setState({
         currentContent: sortedData,
-        columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
+        columnDirections: { ...this.state.columnDirections, [column]: !this.state.columnDirections[column] }
       });
     } else {
       this.setState({
         currentContent: sortedData
+        // columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
       });
     }
   }
@@ -714,11 +725,11 @@ class App extends Component {
 
     let sortedData = content.sort((a, b) => {
       let nameA = a["FLIGHT;BBW"]
-        .split(";")[0]
+        .split(";")[1]
         .toUpperCase()
         .trim();
       let nameB = b["FLIGHT;BBW"]
-        .split(";")[0]
+        .split(";")[1]
         .toUpperCase()
         .trim();
       if (nameA === "") {
@@ -760,11 +771,12 @@ class App extends Component {
       }
       this.setState({
         currentContent: sortedData,
-        columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
+        columnDirections: { ...this.state.columnDirections, [column]: !this.state.columnDirections[column] }
       });
     } else {
       this.setState({
         currentContent: sortedData
+        // columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
       });
     }
   }
@@ -818,11 +830,11 @@ class App extends Component {
         let sortedData = content.sort((a, b) => {
           if (a[column]) {
             let nameA = a[column]
-              .split(";")[0]
+              .split(";")[1]
               .toUpperCase()
               .trim();
             let nameB = b[column]
-              .split(";")[0]
+              .split(";")[1]
               .toUpperCase()
               .trim();
 
@@ -955,11 +967,12 @@ class App extends Component {
           }
           this.setState({
             currentContent: sortedData,
-            columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}
+            columnDirections: { ...this.state.columnDirections, [column]: !this.state.columnDirections[column] }
           });
         } else {
           this.setState({
             currentContent: sortedData
+            // columnDirections: {...this.state.columnDirections, [column]: !this.state.columnDirections[column]}  
           });
         }
       }
@@ -1496,6 +1509,7 @@ class App extends Component {
         0
       );
 
+    const columnDirections = this.state.columnDirections ? this.state.columnDirections : "";
 
     return noFile ? (
       <div
@@ -1981,6 +1995,7 @@ class App extends Component {
                 content={content}
                 selectedRows={selectedRows}
                 selectedTd={selectedTd}
+                columnDirections={columnDirections}
               />
             </div>
           </div>
